@@ -11,6 +11,7 @@ onMounted(async () => {
   currency.value = await getCurrencies();
   rubInCurrency.value = await getRubleRelativeCurrencies();
   currencyInRUB.value = await getCurrencieRelativeRubles();
+  console.log(currencyInRUB.value.Date);
 });
 </script>
 

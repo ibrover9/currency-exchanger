@@ -6,6 +6,7 @@ export const getCurrencies = async () => {
       "https://8e5e773afae46144.mokky.dev/currencies"
     );
     console.log(currencies);
+    return currencies;
   } catch (error) {
     console.error(error);
   }

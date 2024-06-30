@@ -6,6 +6,7 @@ export const getCurrencieRelativeRubles = async () => {
       "https://www.cbr-xml-daily.ru/daily_json.js"
     );
     console.log(currencieRelativeRubles);
+    return currencieRelativeRubles;
   } catch (error) {
     console.error(error);
   }
