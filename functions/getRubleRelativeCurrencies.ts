@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getRubleRelativeCurrencies = async () => {
+export const getRubleRelativeCurrencies = async () => {
   try {
     const { data: rubleRelativeCurrencies } = await axios.get(
       "https://www.cbr-xml-daily.ru/latest.js"
