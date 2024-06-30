@@ -1,12 +1,14 @@
 <script setup>
 import axios from "axios";
+import { getCurrencies } from "~/functions/getCurrencies";
 import { getCurrencieRelativeRubles } from "~/functions/getCurrencieRelativeRubles";
 import { getRubleRelativeCurrencies } from "~/functions/getRubleRelativeCurrencies";
 
 const currencyInRUB = ref({});
 const rubInCurrency = ref({});
-
+const currency = ref([]);
 onMounted(async () => {
+  currency.value = await getCurrencies();
   rubInCurrency.value = await getRubleRelativeCurrencies();
   currencyInRUB.value = await getCurrencieRelativeRubles();
 });
@@ -24,6 +26,4 @@ onMounted(async () => {
       <option value="Рубль">Рубль</option>
     </datalist>
   </div>
-
-  <!-- Third input field -->
 </template>
