@@ -1,5 +1,37 @@
 $primary-color: #3490dc;
 
+html {
+  font-size: 0.0625vw;
+  font-family: Arial;
+}
+
 body {
   background-color: $primary-color;
+}
+
+.center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  input {
+    padding: 5rem;
+    margin: 10rem 10rem;
+    height: 10rem;
+    width: 200rem;
+    font-size: 16rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  html {
+    font-size: 0.2778vw;
+    .center-container {
+      flex-direction: column;
+    }
+  }
 }

@@ -16,10 +16,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
+  <div class="center-container">
     <input type="text" placeholder="Enter a number" />
     <input type="text" placeholder="Select a currency" list="currency" />
-    <input type="text" />
+    <input type="text" placeholder="Result" />
     <input type="text" placeholder="Select a currency" list="currency" />
     <datalist id="currency">
       <option value="Евро">Евро</option>
