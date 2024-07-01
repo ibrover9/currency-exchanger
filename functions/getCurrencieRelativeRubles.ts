@@ -1,12 +1,11 @@
 import axios from "axios";
 
-export const getCurrencieRelativeRubles = async () => {
+export const getCurrencieRelativeRubles = async (currencyStart: string) => {
   try {
     const { data: currencieRelativeRubles } = await axios.get(
       "https://www.cbr-xml-daily.ru/daily_json.js"
     );
-    console.log(currencieRelativeRubles);
-    return currencieRelativeRubles;
+    return currencieRelativeRubles.Valute[currencyStart].Value;
   } catch (error) {
     console.error(error);
   }

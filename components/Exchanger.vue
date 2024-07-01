@@ -4,22 +4,16 @@ import { getCurrencieRelativeRubles } from "~/functions/getCurrencieRelativeRubl
 import { getRubleRelativeCurrencies } from "~/functions/getRubleRelativeCurrencies";
 import { resultСalculationCurrency } from "~/functions/resultСalculationCurency";
 
-const currencyStart = ref<string>("RUB");
-const currencyFinish = ref<string>("RUB");
+const currencyStart = ref<string>("AUD");
+const currencyFinish = ref<string>("AUD");
 const currencies = ref<string[]>([]);
 const isLoading = ref<boolean>(true);
 const number = ref<number>(0);
-// const logValues = () => {
-//   console.log("Number:", number.value);
-//   console.log("currencyStart:", currencyStart.value);
-//   console.log("currencyFinish:", currencyFinish.value);
-// };
+const changeNumberForCurrency = ref<number>(0);
+
 onMounted(async () => {
   try {
     currencies.value = await getCurrencies();
-    // rubInCurrencyObject.value = (await getRubleRelativeCurrencies()) || {};
-    // currencyInRUBObject.value = (await getCurrencieRelativeRubles()) || {};
-    // console.log(currencyInRUBObject.value);
   } catch (error) {
     console.error("Error fetching data:", error);
   } finally {
@@ -27,8 +21,8 @@ onMounted(async () => {
   }
 });
 
-const logAndCalculateCurrency = () => {
-  resultСalculationCurrency(
+const logAndCalculateCurrency = async () => {
+  changeNumberForCurrency.value = await resultСalculationCurrency(
     currencyStart.value,
     currencyFinish.value,
     number.value
@@ -50,7 +44,7 @@ watch(currencyFinish, logAndCalculateCurrency);
       list="currency"
       v-model="currencyStart"
     />
-    <input type="text" placeholder="Result" />
+    <input type="text" placeholder="Result" v-model="changeNumberForCurrency" />
     <input
       type="text"
       placeholder="Select a currency"
