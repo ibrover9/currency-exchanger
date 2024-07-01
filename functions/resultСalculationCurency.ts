@@ -7,9 +7,16 @@ export async function resultСalculationCurrency(
   currencyFinish: string,
   number: number
 ) {
-  const currencyStartInRUB = await getCurrencieRelativeRubles(currencyStart);
-  const currencyFinishInRUB = await getRubleRelativeCurrencies(currencyFinish);
+  const currency = await getCurrencies();
+  if (currency.includes(currencyStart) && currency.includes(currencyFinish)) {
+    const currencyStartInRUB = await getCurrencieRelativeRubles(currencyStart);
+    const currencyFinishInRUB = await getRubleRelativeCurrencies(
+      currencyFinish
+    );
 
-  const rezult = number * currencyStartInRUB * currencyFinishInRUB;
-  return rezult;
+    const rezult = number * currencyStartInRUB * currencyFinishInRUB;
+    return rezult;
+  } else {
+    return 0;
+  }
 }
