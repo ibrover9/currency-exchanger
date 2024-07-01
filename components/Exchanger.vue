@@ -6,9 +6,9 @@ import { getRubleRelativeCurrencies } from "~/functions/getRubleRelativeCurrenci
 
 const currencyInRUB = ref({});
 const rubInCurrency = ref({});
-const currency = ref([]);
+const currencies = ref([]);
 onMounted(async () => {
-  currency.value = await getCurrencies();
+  currencies.value = await getCurrencies();
   rubInCurrency.value = await getRubleRelativeCurrencies();
   currencyInRUB.value = await getCurrencieRelativeRubles();
   console.log(currencyInRUB.value.Date);
@@ -16,15 +16,20 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="center-container">
+  <div v-if="isLoading" class="loader">1</div>
+  <div v-else class="center-container">
     <input type="text" placeholder="Enter a number" />
     <input type="text" placeholder="Select a currency" list="currency" />
     <input type="text" placeholder="Result" />
     <input type="text" placeholder="Select a currency" list="currency" />
     <datalist id="currency">
-      <option value="Евро">Евро</option>
-      <option value="Доллар">Доллар</option>
-      <option value="Рубль">Рубль</option>
+      <option
+        v-for="(currency, index) in currencies"
+        :key="index"
+        :value="currency"
+      >
+        {{ currency }}
+      </option>
     </datalist>
   </div>
 </template>
