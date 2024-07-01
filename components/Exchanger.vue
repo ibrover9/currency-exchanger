@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { getCurrencies } from "~/functions/getCurrencies";
-import { getCurrencieRelativeRubles } from "~/functions/getCurrencieRelativeRubles";
-import { getRubleRelativeCurrencies } from "~/functions/getRubleRelativeCurrencies";
 import { resultСalculationCurrency } from "~/functions/resultСalculationCurency";
-import defineNuxtPlugin from "~/plugins/maska";
 
 const currencyStart = ref<string>("");
 const currencyFinish = ref<string>("");
