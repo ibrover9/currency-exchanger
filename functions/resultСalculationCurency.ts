@@ -5,8 +5,9 @@ import { getRubleRelativeCurrencies } from "./getRubleRelativeCurrencies";
 export async function resultСalculationCurrency(
   currencyStart: string,
   currencyFinish: string,
-  number: number
+  stringNumber: string
 ) {
+  const number = parseFloat(stringNumber);
   const currency = await getCurrencies();
   if (currency.includes(currencyStart) && currency.includes(currencyFinish)) {
     const currencyStartInRUB = await getCurrencieRelativeRubles(currencyStart);

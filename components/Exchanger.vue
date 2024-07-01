@@ -3,13 +3,31 @@ import { getCurrencies } from "~/functions/getCurrencies";
 import { getCurrencieRelativeRubles } from "~/functions/getCurrencieRelativeRubles";
 import { getRubleRelativeCurrencies } from "~/functions/getRubleRelativeCurrencies";
 import { resultСalculationCurrency } from "~/functions/resultСalculationCurency";
+import defineNuxtPlugin from "~/plugins/maska";
 
 const currencyStart = ref<string>("");
 const currencyFinish = ref<string>("");
 const currencies = ref<string[]>([]);
 const isLoading = ref<boolean>(true);
-const number = ref<number>(0);
+const number = ref<string>("");
 const changeNumberForCurrency = ref<number>(0);
+
+const handleInput = () => {
+  number.value = number.value.replace(/[^0-9.]/g, "");
+
+  const parts = number.value.split(".");
+  if (parts.length > 1) {
+    parts[1] = parts[1].slice(0, 2);
+    number.value = parts.join(".");
+  }
+
+  number.value = number.value.replace(/^(\d*\.\d{0,2})\d*$/, "$1");
+
+  // Приведение к числу для расчетов
+  if (number.value !== "") {
+    logAndCalculateCurrency();
+  }
+};
 
 onMounted(async () => {
   try {
@@ -37,7 +55,12 @@ watch(currencyFinish, logAndCalculateCurrency);
 <template>
   <div v-if="isLoading" class="loader">1</div>
   <div v-else class="center-container">
-    <input type="text" placeholder="Enter a number" v-model="number" />
+    <input
+      type="text"
+      placeholder="Enter a number"
+      v-model="number"
+      @input="handleInput"
+    />
     <input
       type="text"
       placeholder="Select a currency"
