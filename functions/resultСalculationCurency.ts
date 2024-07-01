@@ -15,7 +15,9 @@ export async function resultСalculationCurrency(
       currencyFinish
     );
 
-    const rezult = number * currencyStartInRUB * currencyFinishInRUB;
+    const rezult = (number * currencyStartInRUB * currencyFinishInRUB).toFixed(
+      2
+    );
     return rezult;
   } else {
     return 0;

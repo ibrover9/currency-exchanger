@@ -20,7 +20,6 @@ const handleInput = () => {
 
   number.value = number.value.replace(/^(\d*\.\d{0,2})\d*$/, "$1");
 
-  // Приведение к числу для расчетов
   if (number.value !== "") {
     logAndCalculateCurrency();
   }
