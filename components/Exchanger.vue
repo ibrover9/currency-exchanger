@@ -4,8 +4,8 @@ import { getCurrencieRelativeRubles } from "~/functions/getCurrencieRelativeRubl
 import { getRubleRelativeCurrencies } from "~/functions/getRubleRelativeCurrencies";
 import { resultСalculationCurrency } from "~/functions/resultСalculationCurency";
 
-const currencyStart = ref<string>("AUD");
-const currencyFinish = ref<string>("AUD");
+const currencyStart = ref<string>("");
+const currencyFinish = ref<string>("");
 const currencies = ref<string[]>([]);
 const isLoading = ref<boolean>(true);
 const number = ref<number>(0);

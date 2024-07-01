@@ -11,8 +11,13 @@
   },
   "dependencies": {
     "axios": "^1.7.2",
+    "maska": "^3.0.0-beta4",
     "nuxt": "^3.12.2",
-    "vue": "latest"
+    "v-mask": "^2.3.0",
+    "vue": "latest",
+    "vue-inputmask": "^0.2.1",
+    "vue-masked-input": "^0.5.2",
+    "vue-the-mask": "^0.11.1"
   },
   "devDependencies": {
     "sass": "^1.77.6",
