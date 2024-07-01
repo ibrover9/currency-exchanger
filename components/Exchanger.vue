@@ -7,7 +7,7 @@ const currencyFinish = ref<string>("");
 const currencies = ref<string[]>([]);
 const isLoading = ref<boolean>(true);
 const number = ref<string>("");
-const changeNumberForCurrency = ref<number>(0);
+const changeNumberForCurrency = ref<string | 0>(0);
 
 const handleInput = () => {
   number.value = number.value.replace(/[^0-9.]/g, "");
