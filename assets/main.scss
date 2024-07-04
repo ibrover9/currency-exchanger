@@ -1,4 +1,4 @@
-$primary-color: #3490dc;
+$primary-color: #99c8ee;
 
 html {
   font-size: 0.0625vw;
@@ -57,18 +57,43 @@ body {
   }
   .Switch {
     font-size: 16rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 140rem;
+    width: 140rem;
     label {
       text-transform: uppercase;
-    }
-    input {
-      padding: 5rem;
-      margin: 10rem 10rem;
-      width: 20rem;
-      height: 20rem;
-      cursor: pointer;
+      font-size: 16rem;
+      height: 40rem;
+      width: 40rem;
+      span {
+        font-size: 16rem;
+        margin: 0;
+        padding: 0;
+      }
+      .el-checkbox__input {
+        font-size: 16rem;
+
+        .el-checkbox__inner::after {
+          margin-left: 3.5rem;
+          text-align: center;
+          height: 10rem;
+          width: 6rem;
+          top: 10%;
+          left: 10%;
+        }
+        .el-checkbox__inner {
+          height: 20rem;
+          width: 20rem;
+          padding: 0;
+          margin: 0;
+        }
+      }
+      input {
+        min-width: 20rem;
+        max-width: 20rem;
+        min-height: 20rem;
+        max-height: 20rem;
+        cursor: pointer;
+      }
     }
   }
 }

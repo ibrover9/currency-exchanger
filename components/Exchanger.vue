@@ -174,31 +174,24 @@ watch(currencyFinish, logAndCalculateCurrency);
         >
         </el-option>
       </el-select>
-      <!-- <datalist id="currencyStart">
-        <option
-          v-for="(currency, index) in currencies"
-          :key="index"
-          :value="currency.full_name"
-        ></option>
-      </datalist>
-      <datalist id="currencyFinish" class="custom-datalist">
-        <option
-          v-for="(currency, index) in currencies"
-          :key="index"
-          :value="currency.full_name"
-        ></option>
-      </datalist> -->
     </div>
 
     <div class="Switch">
-      <label for="">Переключатель</label>
-      <input
+      <!-- <label for="">Переключатель</label> -->
+      <!-- <input
         type="checkbox"
         id="option1"
         name="option1"
         v-model="checkboxInversionResults"
-      />
+      /> -->
+      <el-checkbox
+        style="font-size: 16rem; height: 56rem"
+        v-model="checkboxInversionResults"
+        >Checkbox Label</el-checkbox
+      >
     </div>
+    <!-- <el-checkbox v-model="checkboxInversionResults">Checkbox Label</el-checkbox> -->
+
     <!-- <p>
       {{ checkboxInversionResults ? "ВЫ ВЫБРАЛИ ОПЦИЮ!" : "ОПЦИЯ НЕ ВЫБРАНА" }}
     </p> -->
