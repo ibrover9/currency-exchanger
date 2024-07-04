@@ -27,6 +27,6 @@ export async function resultСalculationCurrency(
     );
     return rezult;
   } else {
-    return 0;
+    return "0";
   }
 }

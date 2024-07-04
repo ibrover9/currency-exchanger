@@ -11,27 +11,54 @@ body {
 
 .center-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin-top: 10rem;
 
-  input {
-    padding: 5rem;
-    margin: 10rem 10rem;
-    height: 10rem;
-    width: 200rem;
+  .inputs-exchanger {
+    input {
+      padding: 5rem;
+      margin: 10rem 10rem;
+      height: 10rem;
+      width: 200rem;
+      font-size: 16rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+  .Switch {
     font-size: 16rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label {
+      text-transform: uppercase;
+    }
+    input {
+      padding: 5rem;
+      margin: 10rem 10rem;
+      width: 20rem;
+      height: 20rem;
+      cursor: pointer;
+    }
   }
 }
 
 @media screen and (max-width: 912px) {
   html {
     font-size: 0.2778vw;
-    .center-container {
+    .inputs-exchanger {
+      font-size: 16rem;
+      display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+    // .center-container {
+    //   flex-direction: column;
+    // }
   }
 }
