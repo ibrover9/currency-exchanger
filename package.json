@@ -10,9 +10,19 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/vuetify": "^1.12.3",
+    "@vueuse/core": "^10.11.0",
     "axios": "^1.7.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.400.0",
     "maska": "^3.0.0-beta4",
     "nuxt": "^3.12.2",
+    "radix-vue": "^1.9.0",
+    "shadcn-nuxt": "^0.10.4",
+    "shadcn-vue": "^0.10.5",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "v-mask": "^2.3.0",
     "vue": "latest",
     "vue-inputmask": "^0.2.1",
@@ -20,6 +30,9 @@
     "vue-the-mask": "^0.11.1"
   },
   "devDependencies": {
+    "@element-plus/nuxt": "^1.0.9",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "element-plus": "^2.7.6",
     "sass": "^1.77.6",
     "sass-loader": "^14.2.1"
   }

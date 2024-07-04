@@ -18,15 +18,41 @@ body {
   margin-top: 10rem;
 
   .inputs-exchanger {
-    input {
-      padding: 5rem;
+    .input-number {
+      // padding: 5rem;
       margin: 10rem 10rem;
-      height: 10rem;
-      width: 200rem;
+      height: 40rem;
+      width: 300rem;
       font-size: 16rem;
       border: none;
       outline: none;
       cursor: pointer;
+      border-radius: 5rem;
+    }
+    div {
+      font-size: 16rem;
+      padding: 2rem;
+
+      height: 40rem;
+      .el-select__selection {
+        height: 40rem;
+        .el-select__selected-item {
+          display: flex;
+          align-items: center;
+          height: 30rem;
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+    input {
+      height: 20rem;
+      width: 300rem;
+      font-size: 16rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 5rem;
     }
   }
   .Switch {

@@ -1,5 +1,6 @@
 export default {
   devtools: { enabled: true },
+
   build: {
     loaders: {
       scss: {
@@ -7,5 +8,7 @@ export default {
       },
     },
   },
+
   css: ["~/assets/main.scss"],
+  modules: ["@element-plus/nuxt"],
 };

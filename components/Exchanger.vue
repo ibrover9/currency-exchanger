@@ -10,6 +10,8 @@ const isLoading = ref<boolean>(true);
 const number = ref("1");
 const changeNumberForCurrency = ref<string>("1");
 const checkboxInversionResults = ref<boolean>(false);
+const selectedCurrencyStart = ref<string>("Фунт стерлингов (GBP)");
+const selectedCurrencyFinish = ref<string>("Фунт стерлингов (GBP)");
 
 const handleInput = () => {
   number.value = number.value.replace(/[^0-9.]/g, "");
@@ -59,8 +61,9 @@ const handleCurrencySelection = (
 const logAndCalculateCurrency = async () => {
   if (checkboxInversionResults.value) {
     number.value = await resultСalculationCurrency(
-      currencyStart.value,
       currencyFinish.value,
+      currencyStart.value,
+
       changeNumberForCurrency.value
     );
   } else {
@@ -69,6 +72,23 @@ const logAndCalculateCurrency = async () => {
       currencyFinish.value,
       number.value
     );
+  }
+};
+
+const handleChange = (value: string, startOrFinishCurrencies: string) => {
+  console.log("Selected currency:", value, startOrFinishCurrencies);
+  // Добавьте дополнительную логику при изменении выбранной валюты
+  const selectedValue = value;
+  const index = currencies.value.findIndex(
+    (currency: any) => currency.full_name === selectedValue
+  );
+  const currencyResult =
+    index !== -1 ? currencies.value[index].abbreviation : "Not found";
+  console.log(currencyResult);
+  if (startOrFinishCurrencies === "start") {
+    currencyStart.value = currencyResult;
+  } else {
+    currencyFinish.value = currencyResult;
   }
 };
 
@@ -82,45 +102,92 @@ watch(currencyFinish, logAndCalculateCurrency);
   <div v-else class="center-container">
     <div class="inputs-exchanger">
       <input
+        class="input-number"
         type="text"
         placeholder="Enter a number"
         v-model="number"
         @input="handleInput"
       />
-      <input
+      <!-- <input
         type="text"
         placeholder="Select a currency"
         list="currencyStart"
         :value="'Фунт стерлингов (GBP)'"
         @input="(event) => handleCurrencySelection(event, 'start')"
-      />
+      /> -->
+      <el-select
+        filterable
+        v-model="selectedCurrencyStart"
+        @change="handleChange(selectedCurrencyStart, 'start')"
+        style="
+          min-width: 300rem;
+          max-width: 300rem;
+          height: 50rem;
+          font-size: 16rem;
+        "
+      >
+        <el-option
+          v-for="(currency, index) in currencies"
+          style="
+            min-width: 300rem;
+            height: 50rem;
+            font-size: 16rem;
+            padding-top: 10rem;
+          "
+          :key="index"
+          :label="currency.full_name"
+          :value="currency.full_name"
+        >
+        </el-option>
+      </el-select>
       <input
+        class="input-number"
         type="text"
         placeholder="Result"
         v-model="changeNumberForCurrency"
         @input="handleInput"
       />
-      <input
+      <!-- <input
         type="text"
         placeholder="Select a currency"
         list="currencyFinish"
         :value="'Доллар США (USD)'"
         @input="(event) => handleCurrencySelection(event, 'finish')"
-      />
-      <datalist id="currencyStart">
+      /> -->
+      <el-select
+        filterable
+        v-model="selectedCurrencyFinish"
+        @change="handleChange(selectedCurrencyFinish, 'finish')"
+        style="width: 300rem; height: 50rem; font-size: 16rem"
+      >
+        <el-option
+          v-for="(currency, index) in currencies"
+          style="
+            width: 300rem;
+            height: 50rem;
+            font-size: 16rem;
+            padding-top: 10rem;
+          "
+          :key="index"
+          :label="currency.full_name"
+          :value="currency.full_name"
+        >
+        </el-option>
+      </el-select>
+      <!-- <datalist id="currencyStart">
         <option
           v-for="(currency, index) in currencies"
           :key="index"
           :value="currency.full_name"
         ></option>
       </datalist>
-      <datalist id="currencyFinish">
+      <datalist id="currencyFinish" class="custom-datalist">
         <option
           v-for="(currency, index) in currencies"
           :key="index"
           :value="currency.full_name"
         ></option>
-      </datalist>
+      </datalist> -->
     </div>
 
     <div class="Switch">
