@@ -3,11 +3,11 @@ import { getCurrencies } from "~/functions/getCurrencies";
 import { resultСalculationCurrency } from "~/functions/resultСalculationCurency";
 import type { Currency } from "~/models/Exchanger";
 
-const currencyStart: Ref<string> = ref("");
-const currencyFinish: Ref<string> = ref("");
+const currencyStart: Ref<string> = ref("USD");
+const currencyFinish: Ref<string> = ref("GBP");
 const currencies = ref<Currency[]>([]);
 const isLoading = ref<boolean>(true);
-const number = ref<string>("");
+const number = ref<string>("1");
 const changeNumberForCurrency = ref<string | 0>(0);
 
 const handleInput = () => {
@@ -29,6 +29,7 @@ const handleInput = () => {
 onMounted(async () => {
   try {
     currencies.value = await getCurrencies();
+    logAndCalculateCurrency();
   } catch (error) {
     console.error("Error fetching data:", error);
   } finally {
@@ -81,17 +82,26 @@ watch(currencyFinish, logAndCalculateCurrency);
     <input
       type="text"
       placeholder="Select a currency"
-      list="currency"
+      list="currencyStart"
+      :value="'Фунт стерлингов (GBP)'"
       @input="(event) => handleCurrencySelection(event, 'start')"
     />
     <input type="text" placeholder="Result" v-model="changeNumberForCurrency" />
     <input
       type="text"
       placeholder="Select a currency"
-      list="currency"
+      list="currencyFinish"
+      :value="'Доллар США (USD)'"
       @input="(event) => handleCurrencySelection(event, 'finish')"
     />/>
-    <datalist id="currency">
+    <datalist id="currencyStart">
+      <option
+        v-for="(currency, index) in currencies"
+        :key="index"
+        :value="currency.full_name"
+      ></option>
+    </datalist>
+    <datalist id="currencyFinish">
       <option
         v-for="(currency, index) in currencies"
         :key="index"
