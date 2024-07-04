@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { getCurrencies } from "~/functions/getCurrencies";
 import { resultСalculationCurrency } from "~/functions/resultСalculationCurency";
+import type { Currency } from "~/models/Exchanger";
 
-const currencyStart = ref<string>("");
-const currencyFinish = ref<string>("");
-const currencies = ref<string[]>([]);
+const currencyStart: Ref<string> = ref("");
+const currencyFinish: Ref<string> = ref("");
+const currencies = ref<Currency[]>([]);
 const isLoading = ref<boolean>(true);
 const number = ref<string>("");
 const changeNumberForCurrency = ref<string | 0>(0);
@@ -35,6 +36,26 @@ onMounted(async () => {
   }
 });
 
+const handleCurrencySelection = (
+  event: any,
+  startOrFinishCurrencies: string
+) => {
+  const selectedValue = event.target.value;
+  const index = currencies.value.findIndex(
+    (currency: any) => currency.full_name === selectedValue
+  );
+  const currencyResult =
+    index !== -1 ? currencies.value[index].abbreviation : "Not found";
+  console.log(currencyResult);
+  if (startOrFinishCurrencies === "start") {
+    currencyStart.value = currencyResult;
+    console.log("start");
+  } else {
+    currencyFinish.value = currencyResult;
+    console.log("finish");
+  }
+};
+
 const logAndCalculateCurrency = async () => {
   changeNumberForCurrency.value = await resultСalculationCurrency(
     currencyStart.value,
@@ -61,23 +82,21 @@ watch(currencyFinish, logAndCalculateCurrency);
       type="text"
       placeholder="Select a currency"
       list="currency"
-      v-model="currencyStart"
+      @input="(event) => handleCurrencySelection(event, 'start')"
     />
     <input type="text" placeholder="Result" v-model="changeNumberForCurrency" />
     <input
       type="text"
       placeholder="Select a currency"
       list="currency"
-      v-model="currencyFinish"
-    />
+      @input="(event) => handleCurrencySelection(event, 'finish')"
+    />/>
     <datalist id="currency">
       <option
         v-for="(currency, index) in currencies"
         :key="index"
-        :value="currency"
-      >
-        {{ currency }}
-      </option>
+        :value="currency.full_name"
+      ></option>
     </datalist>
   </div>
 </template>

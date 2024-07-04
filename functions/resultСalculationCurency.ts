@@ -1,6 +1,7 @@
 import { getCurrencieRelativeRubles } from "./getCurrencieRelativeRubles";
 import { getCurrencies } from "./getCurrencies";
 import { getRubleRelativeCurrencies } from "./getRubleRelativeCurrencies";
+import type { Currency } from "~/models/Exchanger";
 
 export async function resultСalculationCurrency(
   currencyStart: string,
@@ -8,13 +9,19 @@ export async function resultСalculationCurrency(
   stringNumber: string
 ) {
   const number = parseFloat(stringNumber);
-  const currency = await getCurrencies();
-  if (currency.includes(currencyStart) && currency.includes(currencyFinish)) {
+  const currencies: Currency[] = await getCurrencies();
+  const abbreviationsArray = Object.values(currencies).map(
+    (currency) => currency.abbreviation
+  );
+  console.log(abbreviationsArray);
+  if (
+    abbreviationsArray.includes(currencyStart) &&
+    abbreviationsArray.includes(currencyFinish)
+  ) {
     const currencyStartInRUB = await getCurrencieRelativeRubles(currencyStart);
     const currencyFinishInRUB = await getRubleRelativeCurrencies(
       currencyFinish
     );
-
     const rezult = (number * currencyStartInRUB * currencyFinishInRUB).toFixed(
       2
     );
