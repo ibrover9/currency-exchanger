@@ -58,7 +58,7 @@ body {
   .Switch {
     font-size: 16rem;
     height: 140rem;
-    width: 140rem;
+    width: 200rem;
     label {
       text-transform: uppercase;
       font-size: 16rem;
@@ -68,6 +68,9 @@ body {
         font-size: 16rem;
         margin: 0;
         padding: 0;
+      }
+      .el-checkbox__label {
+        margin-left: 15rem;
       }
       .el-checkbox__input {
         font-size: 16rem;

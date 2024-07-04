@@ -177,23 +177,11 @@ watch(currencyFinish, logAndCalculateCurrency);
     </div>
 
     <div class="Switch">
-      <!-- <label for="">Переключатель</label> -->
-      <!-- <input
-        type="checkbox"
-        id="option1"
-        name="option1"
-        v-model="checkboxInversionResults"
-      /> -->
       <el-checkbox
         style="font-size: 16rem; height: 56rem"
         v-model="checkboxInversionResults"
-        >Checkbox Label</el-checkbox
+        >переключатель</el-checkbox
       >
     </div>
-    <!-- <el-checkbox v-model="checkboxInversionResults">Checkbox Label</el-checkbox> -->
-
-    <!-- <p>
-      {{ checkboxInversionResults ? "ВЫ ВЫБРАЛИ ОПЦИЮ!" : "ОПЦИЯ НЕ ВЫБРАНА" }}
-    </p> -->
   </div>
 </template>
