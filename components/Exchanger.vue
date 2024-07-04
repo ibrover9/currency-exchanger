@@ -108,13 +108,7 @@ watch(currencyFinish, logAndCalculateCurrency);
         v-model="number"
         @input="handleInput"
       />
-      <!-- <input
-        type="text"
-        placeholder="Select a currency"
-        list="currencyStart"
-        :value="'Фунт стерлингов (GBP)'"
-        @input="(event) => handleCurrencySelection(event, 'start')"
-      /> -->
+
       <el-select
         filterable
         v-model="selectedCurrencyStart"

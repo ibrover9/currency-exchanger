@@ -28,6 +28,10 @@ body {
       outline: none;
       cursor: pointer;
       border-radius: 5rem;
+      transition: box-shadow 0.3s ease; /* Анимация для box-shadow */
+      &:focus {
+        box-shadow: 0 0 0 2rem rgba(0, 0, 255, 0.5); /* Пример тени фокуса */
+      }
     }
     div {
       font-size: 16rem;
