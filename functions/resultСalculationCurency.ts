@@ -13,7 +13,7 @@ export async function resultСalculationCurrency(
   const abbreviationsArray = Object.values(currencies).map(
     (currency) => currency.abbreviation
   );
-  console.log(abbreviationsArray);
+
   if (
     abbreviationsArray.includes(currencyStart) &&
     abbreviationsArray.includes(currencyFinish)

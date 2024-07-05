@@ -84,7 +84,7 @@ const handleChange = (value: string, startOrFinishCurrencies: string) => {
   );
   const currencyResult =
     index !== -1 ? currencies.value[index].abbreviation : "Not found";
-  console.log(currencyResult);
+
   if (startOrFinishCurrencies === "start") {
     currencyStart.value = currencyResult;
   } else {
@@ -141,13 +141,7 @@ watch(currencyFinish, logAndCalculateCurrency);
         v-model="changeNumberForCurrency"
         @input="handleInput"
       />
-      <!-- <input
-        type="text"
-        placeholder="Select a currency"
-        list="currencyFinish"
-        :value="'Доллар США (USD)'"
-        @input="(event) => handleCurrencySelection(event, 'finish')"
-      /> -->
+
       <el-select
         filterable
         v-model="selectedCurrencyFinish"
